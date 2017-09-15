@@ -4,6 +4,8 @@ import br.cefetmg.games.movement.AlgoritmoMovimentacao;
 import br.cefetmg.games.movement.Direcionamento;
 import br.cefetmg.games.movement.Pose;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.Vector3;
+import java.util.Random;
 
 /**
  * Movimenta o agente em uma direção aleatória, vagando pelo cenário.
@@ -12,8 +14,9 @@ import com.badlogic.gdx.Input.Keys;
  */
 public class Vagar extends AlgoritmoMovimentacao {
 
-    private static final char NOME = 'w';
+    private static final char NOME = 'v';
     private float maxAngular = 30f;
+    private Random r;
 
     public Vagar() {
         super(NOME);
@@ -23,23 +26,24 @@ public class Vagar extends AlgoritmoMovimentacao {
         super(NOME);
         maxVelocidade = tangencial;
         maxAngular = angular;
+        r = new Random();
     }
 
     @Override
     public Direcionamento guiar(Pose agente) {
         Direcionamento output = new Direcionamento();
+        
+        Vector3 direction = agente.getOrientacaoComoVetor();
+        direction.scl(maxVelocidade);
+        
+        output.velocidade = direction;
+        output.rotacao = (r.nextFloat() - r.nextFloat())* maxAngular; 
 
-        // calcula que direção tomar (configura um objeto Direcionamento 
-        // e o retorna)
-        // ...
-        // super.alvo já contém a posição do alvo
-        // agente (parâmetro) é a pose do agente que estamos guiando
-        // ...
         return output;
     }
 
     @Override
     public int getTeclaParaAtivacao() {
-        return Keys.W;
+        return Keys.V;
     }
 }

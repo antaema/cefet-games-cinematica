@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector3;
 
 /**
  * É uma entidade do jogo que se movimenta com algum comportamento.
+ *
  * @author Flávio Coutinho <fegemo@cefetmg.br>
  */
 public class Agente {

@@ -25,8 +25,9 @@ public class Pose {
     }
 
     /**
-     * Retorna um vetor que representa a direção que o ângulo "orientação" 
-     * desta pose representa.
+     * Retorna um vetor que representa a direção que o ângulo "orientação" desta
+     * pose representa.
+     *
      * @return um vetor na mesma direção que o ângulo.
      */
     public Vector3 getOrientacaoComoVetor() {
@@ -38,6 +39,7 @@ public class Pose {
     /**
      * Define a orientação de forma que ela seja a mesma da direção do vetor
      * velocidade.
+     *
      * @param velocidade vetor velocidade, indicando a direção para onde esta
      * pose deve se orientar (rotacionar).
      */
